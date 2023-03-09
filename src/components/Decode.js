@@ -53,13 +53,13 @@ function Decode() {
 
     if (document.getElementById("message").value === "") {
       document.getElementById("errorMessage").innerHTML =
-        "please enter a message"
+        "Please enter text here"
     } else if (document.getElementById("key").value === "") {
       document.getElementById("errorMessage1").innerHTML =
-        "please enter a key value"
+        "Please enter a key value"
     } else if (isNaN(document.getElementById("key").value)) {
       document.getElementById("errorMessage1").innerHTML =
-        "please enter a numerical value"
+        "Please enter a numerical value"
     } else {
       //we loop through the given message
       for (let j = 0; j < inputValue.length; j++) {
@@ -120,14 +120,14 @@ function Decode() {
   return (
     <div className="container">
       <div className="holder">
-        <div>
+        <div className="links">
           <button className="link0">
             <Link className="link" to="/encode">
               Encode
             </Link>
           </button>
         </div>
-        <div>
+        <div className="links">
           <button className="link0">
             <Link className="link" to="/decode">
               Decode
@@ -136,36 +136,49 @@ function Decode() {
           <Outlet />
         </div>
       </div>
-      <div>
-        <input
-          type="number"
-          id="key"
-          placeholder="Enter a cipher Key..."
-        ></input>
-        <p id="errorMessage1"></p>
-      </div>
-      <div>
-        <div>
-          <input
-            type="text"
-            id="message"
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="Enter CipherText..."
-          ></input>
-          <p id="errorMessage"></p>
+      <div className="messageArea">
+        <div className="keyContainer">
+          <h2>Shift-Key</h2>
+          <input type="number" id="key" placeholder="0"></input>
+          <p id="errorMessage1"></p>
         </div>
-      </div>
 
-      <div>
-        <div>Text</div>
+        <div className="mainArea">
+          <div>
+            <div className="headings">Cipher-Text</div>
+            <div>
+              <textarea
+                type="text"
+                id="message"
+                onChange={handleInputChange}
+                placeholder="Enter CipherText..."
+                value={inputValue}
+                rows="10"
+                cols="50"
+              />
+              <p id="errorMessage"></p>
+            </div>
+          </div>
+          <div>
+            <div className="headings">Plaintext</div>
+            <div>
+              <textarea
+                type="text"
+                id="displayText"
+                value={targetValue}
+                rows="10"
+                cols="50"
+              />
+            </div>
+          </div>
+        </div>
+
         <div>
-          <p id="displayText">{targetValue}</p>
+          <button className="link0" onClick={clear}>
+            Clear
+          </button>
         </div>
       </div>
-      <button className="link0" onClick={clear}>
-        clear
-      </button>
     </div>
   )
 }

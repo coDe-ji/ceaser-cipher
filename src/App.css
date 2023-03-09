@@ -38,18 +38,17 @@
   
   
 }
-.link:active{
+.active-link {
   color: red;
 }
-
 .main{
   border: 2px solid black;
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 .container{
   border: 2px solid red;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 .holder{
@@ -93,6 +92,10 @@ textarea:focus {
   margin-top: -15px;
   width: 3%;
   font-size: 30px;
+ }
+
+ #errorMessage, #errorMessage1{
+  color: red;
  }
 /* style for the footer */
 #footer{  
